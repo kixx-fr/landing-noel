@@ -10,28 +10,29 @@
   <style>
     /* === STYLES NOËL === */
     
-    /* Correction Arrière-plan (pour visibilité) */
+    /* CORRECTION ARRIÈRE-PLAN : Couleur sur HTML, pas sur BODY */
     html {
-        background: #0d4232; 
-        overflow-x: hidden; 
+        background: #0d4232; /* Fond vert/bleu nuit foncé */
+        overflow-x: hidden; /* Empêche tout débordement horizontal */
     }
 
     body {
         margin: 0;
         font-family: Inter, sans-serif;
-        background: transparent; 
+        background: transparent; /* Body transparent pour voir le HTML et les effets */
         color: #f7f7f7; 
         display: flex;
         justify-content: center;
         align-items: center;
         min-height: 100vh;
+        /* CORRECTION RESPONSIVE : Réduction du padding pour petits écrans */
         padding: 20px 0; 
         box-sizing: border-box;
         text-align: center;
         position: relative; 
     }
     
-    /* Sapin de Noël (Arrière-Plan) */
+    /* --- NOUVEAU: Le Sapin de Noël (Arrière-Plan Faint) --- */
     .christmas-tree {
         position: fixed; 
         bottom: -50px; 
@@ -40,12 +41,15 @@
         width: 100vw;
         height: 100vh;
         background: radial-gradient(circle at 50% 100%, #004d40 0%, transparent 60%); 
+        /* CORRECTION ARRIÈRE-PLAN : Opacité augmentée pour être visible */
         opacity: 0.25; 
-        z-index: -2; 
+        z-index: -2; /* Derrière la neige, mais visible */
         pointer-events: none;
     }
 
-    /* Effet "chute de neige" (Visible) */
+    /* Effet "chute de neige" (Cristaux plus visibles et plus denses) */
+    
+    /* Couche 1: Gros flocons / Cristaux */
     body::before {
         content: "";
         position: fixed;
@@ -56,11 +60,13 @@
         background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10"><circle cx="5" cy="5" r="2" fill="#e0f0ff"/></svg>') repeat; 
         background-size: 50px 50px;
         animation: snowfall 18s linear infinite;
+        /* CORRECTION ARRIÈRE-PLAN : Opacité et Z-index corrigés */
         opacity: 0.9; 
         pointer-events: none;
         z-index: -1;
     }
 
+    /* Couche 2: Petits et rapides cristaux */
     body::after {
         content: "";
         position: fixed;
@@ -72,6 +78,7 @@
         background-size: 30px 30px;
         animation: snowfall 12s linear infinite;
         animation-delay: -3s;
+        /* CORRECTION ARRIÈRE-PLAN : Opacité et Z-index corrigés */
         opacity: 0.7;
         pointer-events: none;
         z-index: -1;
@@ -82,8 +89,8 @@
         100% { background-position: 500px 1500px; } 
     }
 
-    /* Correction Responsive (Taille réduite pour mobile) */
     .container {
+        /* CORRECTION RESPONSIVE : Padding réduit pour petits écrans */
         padding: 30px 20px; 
         background: #990000; 
         border-radius: 25px; 
@@ -95,6 +102,7 @@
     }
 
     h1 {
+        /* CORRECTION RESPONSIVE : Taille de police légèrement réduite */
         font-size: 26px; 
         margin-bottom: 10px;
         color: #ffcc00; 
@@ -102,7 +110,7 @@
 
     p {
         color: #f7f7f7; 
-        margin-bottom: 20px; 
+        margin-bottom: 20px; /* Marge réduite */
         font-weight: 500;
         line-height: 1.5;
     }
@@ -119,6 +127,7 @@
         background: #ffcc00; 
         color: #990000; 
         border: 3px solid #ffcc00;
+        /* CORRECTION RESPONSIVE : Padding et police réduits */
         padding: 12px 25px;
         font-size: 1.1em;
         font-weight: bold;
@@ -126,7 +135,7 @@
         cursor: pointer;
         box-shadow: 0 0 15px rgba(255, 204, 0, 0.7);
         transition: all 0.3s;
-        margin-top: 15px; 
+        margin-top: 15px; /* Marge réduite */
         width: 100%;
         display: block; 
     }
@@ -137,6 +146,7 @@
         box-shadow: 0 0 25px #f7f7f7;
         transform: scale(1.03);
     }
+    /* --- FIN STYLES TIMER/BOUTON --- */
 
     /* === GESTION DE LA LIGNE DE PAIEMENT === */
     .payments {
@@ -144,6 +154,7 @@
         justify-content: center;
         align-items: center;
         flex-wrap: wrap; 
+        /* CORRECTION RESPONSIVE : Espace réduit */
         gap: 8px 12px; 
         margin-top: 25px; 
         padding-bottom: 10px; 
@@ -160,7 +171,7 @@
         margin: 5px 0; 
     }
 
-    /* Logos (PayPal, SumUp, AMEX) */
+    /* CORRECTION RESPONSIVE : Logos principaux légèrement réduits */
     .paypal-logo, .sumup-logo, .amex-logo { 
         max-height: 65px; 
         width: auto;
@@ -177,27 +188,27 @@
         background: #990000; 
         border-radius: 8px;
         padding: 0; 
-        margin: 8px 0; 
+        margin: 8px 0; /* Marge réduite */
     }
 
     .cards-line img {
         border: none;
-        max-height: 30px; 
+        max-height: 30px; /* Taille réduite */
         padding: 2px;
         margin: 0;
     }
     
-    /* Google Pay Block */
+    /* Logo Google Pay Block */
     .google-pay-block {
         width: 100%;
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin: 8px 0; 
+        margin: 8px 0; /* Marge réduite */
     }
     .google-pay-block img {
         background: #f7f7f7; 
-        max-height: 65px; 
+        max-height: 65px; /* Taille réduite */
         border: 2px solid #ffcc00;
         margin-bottom: 5px;
     }
@@ -216,6 +227,7 @@
     }
 
     .logo-container {
+        /* CORRECTION RESPONSIVE : Taille réduite */
         width: 80px;
         height: 80px;
         margin: 0 auto 15px;
@@ -256,7 +268,7 @@
     .pulsing-text {
         display: inline-block;
         color: #ffcc00; 
-        font-size: 1.2em; 
+        font-size: 1.2em; /* Taille réduite */
         animation: textPulse 1s infinite alternate;
         font-weight: 700;
         transition: all 0.5s; 
@@ -304,7 +316,7 @@
       <img src="assets/amex.png" alt="American Express" class="amex-logo"> 
 
       <div class="cards-line">
-      </div>
+        </div>
 
       <div class="google-pay-block">
         <img src="assets/googlepay.png" alt="Google Pay">
