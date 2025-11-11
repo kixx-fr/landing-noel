@@ -38,10 +38,10 @@
       transition: transform 0.3s ease;
     }
 
-    /* AJUSTEMENT MOBILE (NOUVELLE ÉCHELLE 0.82) */
+    /* ÉCHELLE MOBILE (0.88) */
     @media (max-width: 480px) {
       .container {
-        transform: scale(0.82);
+        transform: scale(0.88);
         transform-origin: top center;
       }
     }
@@ -151,20 +151,17 @@
       100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255,204,0,0);}
     }
 
-    /* TEXTE CRÉDIT CENTRÉ MAINTENANT */
     .credit-text-box {
       background: #000;
       border: 1px solid #ffcc00;
       border-radius: 4px;
       padding: 8px;
-      font-size: 0.75em;
-      line-height: 1.45;
+      font-size: 0.7em;
+      line-height: 1.4;
       width: 85%;
       margin: 12px auto 0;
-      text-align: center;
-      color: #f7f7f7;
+      text-align: center; /* L'alignement du texte est maintenant CENTRÉ */
     }
-
   </style>
 </head>
 
@@ -181,7 +178,7 @@
   <h1>Joyeuses Fêtes ! 🎁</h1>
 
   <p>Tout est réuni pour un max de performances et de style.<br>
-  <span class="pulsing-text">Livraison Gratuite 48h – Qualité Authentique 🎅</span></p>
+  <span class="pulsing-text">Livraison Gratuite 48h – Qualité Authentique 🎅✨</span></p>
 
   <button id="start-button"></button>
   <div id="countdown" class="timer"></div>
@@ -228,7 +225,7 @@ function startRedirect() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  startButton.textContent = `Cliquez pour activer la magie de Noël (${seconds}s) 🎶`;
+  startButton.textContent = `Cliquez pour activer la magie  Noël (${seconds}s)🎵`;
   startButton.addEventListener('click', startRedirect);
 });
 </script>
