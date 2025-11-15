@@ -23,63 +23,36 @@
         display: flex;
         justify-content: center;
         
-        /* * CORRECTION RESPONSIVE N°1 (LA PLUS IMPORTANTE)
-         * On passe de 'align-items: center' à 'align-items: flex-start'.
-         * Cela force le conteneur à s'ancrer en HAUT de l'écran.
-         * Fini le débordement vertical sur mobile.
-         */
+        /* CORRECTION RESPONSIVE : On garde l'ancrage en HAUT */
         align-items: flex-start; 
         
         min-height: 100vh;
-        padding: 20px 0; /* Un peu d'air en haut et en bas */
+        padding: 20px 0; /* Garde l'espace en haut/bas */
         box-sizing: border-box;
         text-align: center;
         position: relative; 
     }
     
-    /* --- NOUVEAU: Le Sapin de Noël (Arrière-Plan Faint) --- */
+    /* --- Arrière-Plan Sapin --- */
     .christmas-tree {
-        position: fixed; 
-        bottom: -50px; 
-        left: 50%;
-        transform: translateX(-50%);
-        width: 100vw;
-        height: 100vh;
+        position: fixed; bottom: -50px; left: 50%;
+        transform: translateX(-50%); width: 100vw; height: 100vh;
         background: radial-gradient(circle at 50% 100%, #004d40 0%, transparent 60%); 
-        opacity: 0.25; 
-        z-index: -2; 
-        pointer-events: none;
+        opacity: 0.25; z-index: -2; pointer-events: none;
     }
 
     /* Effet "chute de neige" */
     body::before {
-        content: "";
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
+        content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
         background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10"><circle cx="5" cy="5" r="2" fill="#e0f0ff"/></svg>') repeat; 
-        background-size: 50px 50px;
-        animation: snowfall 18s linear infinite;
-        opacity: 0.9; 
-        pointer-events: none;
-        z-index: -1;
+        background-size: 50px 50px; animation: snowfall 18s linear infinite;
+        opacity: 0.9; pointer-events: none; z-index: -1;
     }
     body::after {
-        content: "";
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
+        content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
         background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="5" height="5"><circle cx="2.5" cy="2.5" r="1" fill="#f7f7f7"/></svg>') repeat;
-        background-size: 30px 30px;
-        animation: snowfall 12s linear infinite;
-        animation-delay: -3s;
-        opacity: 0.7;
-        pointer-events: none;
-        z-index: -1;
+        background-size: 30px 30px; animation: snowfall 12s linear infinite; animation-delay: -3s;
+        opacity: 0.7; pointer-events: none; z-index: -1;
     }
     @keyframes snowfall {
         0% { background-position: 0% 0%; }
@@ -87,7 +60,8 @@
     }
 
     .container {
-        padding: 30px 20px; 
+        /* CORRECTION N°1 : Réduction du padding vertical */
+        padding: 20px 20px; 
         background: #990000; 
         border-radius: 25px; 
         max-width: 450px; 
@@ -96,13 +70,9 @@
         border: 5px solid #ffcc00; 
         position: relative; 
         
-        /* * CORRECTION RESPONSIVE N°2
-         * On s'assure que le bloc ne soit JAMAIS plus grand que l'écran.
-         * Si le contenu (logos) est trop long, c'est l'intérieur du bloc 
-         * qui défilera, mais le cadre restera en place.
-         */
-        max-height: 95vh; /* 95% de la hauteur de l'écran */
-        overflow-y: auto; /* Ajoute un scroll INTERNE si besoin */
+        /* CORRECTION N°2 : La "sécurité" pour petits écrans */
+        max-height: 95vh; /* Ne sera jamais plus grand que l'écran */
+        overflow-y: auto; /* Ajoute un scroll INTERNE si le contenu est VRAIMENT trop long */
     }
 
     h1 {
@@ -113,7 +83,7 @@
 
     p {
         color: #f7f7f7; 
-        margin-bottom: 20px; 
+        margin-bottom: 15px; /* CORRECTION : Marge réduite (était 20px) */
         font-weight: 500;
         line-height: 1.5;
     }
@@ -122,31 +92,22 @@
     .timer {
         font-size: 20px;
         color: #ffcc00; 
-        margin-top: 15px;
+        margin-top: 10px; /* CORRECTION : Marge réduite (était 15px) */
         font-weight: bold;
     }
 
     #start-button {
-        background: #ffcc00; 
-        color: #990000; 
-        border: 3px solid #ffcc00;
-        padding: 12px 25px;
-        font-size: 1.1em;
-        font-weight: bold;
-        border-radius: 12px;
-        cursor: pointer;
+        background: #ffcc00; color: #990000; border: 3px solid #ffcc00;
+        padding: 12px 25px; font-size: 1.1em; font-weight: bold;
+        border-radius: 12px; cursor: pointer;
         box-shadow: 0 0 15px rgba(255, 204, 0, 0.7);
         transition: all 0.3s;
-        margin-top: 15px; 
-        width: 100%;
-        display: block; 
+        margin-top: 10px; /* CORRECTION : Marge réduite (était 15px) */
+        width: 100%; display: block; 
     }
-    
     #start-button:hover {
-        background: #f7f7f7; 
-        color: #0f4c3a; 
-        box-shadow: 0 0 25px #f7f7f7;
-        transform: scale(1.03);
+        background: #f7f7f7; color: #0f4c3a; 
+        box-shadow: 0 0 25px #f7f7f7; transform: scale(1.03);
     }
 
     /* === GESTION DE LA LIGNE DE PAIEMENT === */
@@ -155,94 +116,70 @@
         justify-content: center;
         align-items: center;
         flex-wrap: wrap; 
-        gap: 8px 12px; 
-        margin-top: 25px; 
+        gap: 5px 10px; /* CORRECTION : Espace entre logos réduit */
+        margin-top: 15px; /* CORRECTION : Marge réduite (était 25px) */
         padding-bottom: 10px; 
     }
 
     .payments img {
-        height: auto; 
-        max-width: 100%;
-        object-fit: contain;
-        display: block; 
-        padding: 5px; 
-        border-radius: 8px;
+        height: auto; max-width: 100%; object-fit: contain;
+        display: block; padding: 5px; border-radius: 8px;
         border: 2px solid #ffcc00; 
         margin: 5px 0; 
     }
 
-    /* Logos principaux (Paypal, Sumup) */
+    /* CORRECTION N°3 : Tailles des logos réduites */
     .paypal-logo, .sumup-logo { 
-        max-height: 65px; 
+        max-height: 55px; /* Était 65px */
         width: auto;
     }
     
-    /* * CORRECTION LOGOS PAIEMENT N°1
-     * La ligne de cartes (qui était vide)
-     */
     .payments .cards-line {
-        width: 100%;
-        display: block; /* On change en 'block' pour que l'image prenne la largeur */
-        background: #f7f7f7; /* Fond blanc pour bien voir la strip */
-        border-radius: 8px;
-        padding: 10px; /* Un peu d'espace */
-        margin: 8px 0; 
+        width: 100%; display: block; 
+        background: #f7f7f7; border-radius: 8px;
+        padding: 8px; /* Padding réduit */
+        margin: 5px 0; /* CORRECTION : Marge réduite (était 8px) */
         border: 2px solid #ffcc00;
     }
 
-    /* L'image strip à l'intérieur de la 'cards-line' */
     .cards-line img {
         border: none;
-        max-height: 40px; /* Hauteur max de la strip */
-        width: 100%; /* L'image prend 100% de la largeur du conteneur */
-        object-fit: contain; /* S'assure que la strip ne soit pas déformée */
-        padding: 0;
-        margin: 0;
+        max-height: 35px; /* CORRECTION : Hauteur réduite (était 40px) */
+        width: 100%; object-fit: contain; 
+        padding: 0; margin: 0;
     }
     
-    /* Logo Google Pay Block */
     .google-pay-block {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
+        width: 100%; display: flex; flex-direction: column;
         align-items: center;
-        margin: 8px 0; 
+        margin: 5px 0; /* CORRECTION : Marge réduite (était 8px) */
     }
     .google-pay-block img {
         background: #f7f7f7; 
-        max-height: 65px; 
+        max-height: 55px; /* CORRECTION : Hauteur réduite (était 65px) */
         border: 2px solid #ffcc00;
         margin-bottom: 5px;
     }
+    /* FIN CORRECTIONS TAILLE LOGOS */
+
     .credit-text-box {
-        background: #000;
-        color: #f7f7f7;
-        padding: 8px;
-        font-size: 0.7em;
-        line-height: 1.4;
-        border-radius: 4px;
-        border: 1px solid #ffcc00;
-        width: 80%;
-        max-width: 250px;
-        margin: 0 auto;
-        text-align: left;
+        background: #000; color: #f7f7f7;
+        padding: 8px; font-size: 0.7em; line-height: 1.4;
+        border-radius: 4px; border: 1px solid #ffcc00;
+        width: 80%; max-width: 250px;
+        margin: 0 auto; text-align: left;
     }
 
     .logo-container {
-        width: 80px;
-        height: 80px;
-        margin: 0 auto 15px;
-        border-radius: 50%; 
-        overflow: hidden;
+        width: 80px; height: 80px;
+        margin: 0 auto 10px; /* CORRECTION : Marge réduite (était 15px) */
+        border-radius: 50%; overflow: hidden;
         border: 4px solid #ffcc00;
         box-shadow: 0 0 15px rgba(255, 204, 0, 0.8);
     }
-
     .logo-container img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
+        width: 100%; height: 100%;
+        object-fit: cover; display: block;
     }
 
     /* === ANIMATION PAYPAL (Pulsation) === */
@@ -251,43 +188,27 @@
         background: #f7f7f7; 
     }
     @keyframes pulse {
-      0% {
-        transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(255, 204, 0, 0.7); 
-      }
-      70% {
-        transform: scale(1.1);
-        box-shadow: 0 0 0 15px rgba(255, 204, 0, 0);
-      }
-      100% {
-        transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(255, 204, 0, 0);
-      }
+      0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 204, 0, 0.7); }
+      70% { transform: scale(1.1); box-shadow: 0 0 0 15px rgba(255, 204, 0, 0); }
+      100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 204, 0, 0); }
     }
     
     /* === ANIMATION TEXTE (TRÈS VISIBLE) === */
     .pulsing-text {
-        display: inline-block;
-        color: #ffcc00; 
-        font-size: 1.2em; 
-        animation: textPulse 1s infinite alternate;
-        font-weight: 700;
-        transition: all 0.5s; 
+        display: inline-block; color: #ffcc00; 
+        font-size: 1.2em; animation: textPulse 1s infinite alternate;
+        font-weight: 700; transition: all 0.5s; 
     }
-
     @keyframes textPulse {
         from {
             text-shadow: 0 0 8px #ffcc00, 0 0 15px #ffcc00, 0 0 25px rgba(255, 204, 0, 0.6);
-            transform: scale(1);
-            opacity: 0.9;
+            transform: scale(1); opacity: 0.9;
         }
         to {
             text-shadow: 0 0 20px #ffcc00, 0 0 35px #ffcc00, 0 0 60px rgba(255, 204, 0, 1);
-            transform: scale(1.05); 
-            opacity: 1;
+            transform: scale(1.05); opacity: 1;
         }
     }
-
   </style>
 </head>
 <body>
