@@ -94,8 +94,8 @@
         padding: 30px 20px; 
         background: #990000; 
         border-radius: 25px; 
-        max-width: 450px; 
-        width: 95%; 
+        max-width: 450px; /* C'est ça qui gère la taille sur Desktop */
+        width: 95%; /* C'est ça qui gère la taille sur Smartphone */
         box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
         border: 5px solid #ffcc00; 
         position: relative; 
@@ -172,12 +172,13 @@
     }
 
     /* CORRECTION RESPONSIVE : Logos principaux légèrement réduits */
-    .paypal-logo, .sumup-logo, .amex-logo { 
+    /* *** CORRIGÉ : .amex-logo retiré car l'image était manquante *** */
+    .paypal-logo, .sumup-logo { 
         max-height: 65px; 
         width: auto;
     }
     
-    /* Ligne CB (vide) */
+    /* Ligne CB (maintenant remplie) */
     .payments .cards-line {
         width: 100%;
         display: flex;
@@ -193,7 +194,11 @@
 
     .cards-line img {
         border: none;
-        max-height: 30px; /* Taille réduite */
+        /* *** CORRIGÉ : Styles ajustés pour le bandeau cb.png *** */
+        width: 100%;
+        max-width: 400px; /* Empêche le bandeau d'être trop large */
+        height: auto;
+        object-fit: contain;
         padding: 2px;
         margin: 0;
     }
@@ -212,6 +217,7 @@
         border: 2px solid #ffcc00;
         margin-bottom: 5px;
     }
+    /* Note: Le texte ci-dessous remplace l'image credit.png, c'est mieux */
     .credit-text-box {
         background: #000;
         color: #f7f7f7;
@@ -295,7 +301,7 @@
 
   <div class="container">
     <div class="logo-container">
-      <img src="assets/logo-kixx.png" alt="Kixx">
+      <img src="assets/logo-kixx.jpg" alt="Kixx">
     </div>
 
     <h1>Joyeuses Fêtes ! 🎁 </h1>
@@ -313,13 +319,13 @@
       
       <img src="assets/sumup.png" alt="SumUp" class="sumup-logo">
       
-      <img src="assets/amex.png" alt="American Express" class="amex-logo"> 
-
       <div class="cards-line">
-        </div>
+        <img src="assets/cb.png" alt="Cartes bancaires supportées (Visa, Mastercard, Amex)">
+      </div>
 
       <div class="google-pay-block">
         <img src="assets/googlepay.png" alt="Google Pay">
+        
         <div class="credit-text-box">
             *Un crédit vous engage et doit être remboursé<br>
             vérifiez vos capacités de remboursement avant de vous engager<br>
