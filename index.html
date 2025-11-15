@@ -22,12 +22,9 @@
         color: #f7f7f7; 
         display: flex;
         justify-content: center;
-        
-        /* CORRECTION RESPONSIVE : On garde l'ancrage en HAUT */
-        align-items: flex-start; 
-        
+        align-items: flex-start; /* Ancrage en HAUT */
         min-height: 100vh;
-        padding: 20px 0; /* Garde l'espace en haut/bas */
+        padding: 10px 0; /* CORRECTION : Padding vertical réduit */
         box-sizing: border-box;
         text-align: center;
         position: relative; 
@@ -60,8 +57,8 @@
     }
 
     .container {
-        /* CORRECTION N°1 : Réduction du padding vertical */
-        padding: 20px 20px; 
+        /* CORRECTION N°1 : Padding réduit au max */
+        padding: 15px; 
         background: #990000; 
         border-radius: 25px; 
         max-width: 450px; 
@@ -70,39 +67,40 @@
         border: 5px solid #ffcc00; 
         position: relative; 
         
-        /* CORRECTION N°2 : La "sécurité" pour petits écrans */
-        max-height: 95vh; /* Ne sera jamais plus grand que l'écran */
-        overflow-y: auto; /* Ajoute un scroll INTERNE si le contenu est VRAIMENT trop long */
+        /* CORRECTION N°2 : Le "blocage" de hauteur que tu as suggéré */
+        max-height: 98vh; /* Ne sera jamais plus grand que l'écran */
+        overflow-y: auto; /* Sécurité si un écran est VRAIMENT petit */
     }
 
     h1 {
-        font-size: 26px; 
-        margin-bottom: 10px;
+        font-size: 24px; /* CORRECTION : Taille réduite */
+        margin-bottom: 8px; /* CORRECTION : Marge réduite */
         color: #ffcc00; 
     }
 
     p {
         color: #f7f7f7; 
-        margin-bottom: 15px; /* CORRECTION : Marge réduite (était 20px) */
+        margin-bottom: 10px; /* CORRECTION : Marge réduite */
         font-weight: 500;
-        line-height: 1.5;
+        line-height: 1.4; /* CORRECTION : Interligne réduit */
     }
 
     /* --- STYLES TIMER/BOUTON --- */
     .timer {
-        font-size: 20px;
+        font-size: 18px; /* CORRECTION : Taille réduite */
         color: #ffcc00; 
-        margin-top: 10px; /* CORRECTION : Marge réduite (était 15px) */
+        margin-top: 8px; /* CORRECTION : Marge réduite */
         font-weight: bold;
     }
 
     #start-button {
         background: #ffcc00; color: #990000; border: 3px solid #ffcc00;
-        padding: 12px 25px; font-size: 1.1em; font-weight: bold;
+        padding: 10px 20px; /* CORRECTION : Padding réduit */
+        font-size: 1.1em; font-weight: bold;
         border-radius: 12px; cursor: pointer;
         box-shadow: 0 0 15px rgba(255, 204, 0, 0.7);
         transition: all 0.3s;
-        margin-top: 10px; /* CORRECTION : Marge réduite (était 15px) */
+        margin-top: 8px; /* CORRECTION : Marge réduite */
         width: 100%; display: block; 
     }
     #start-button:hover {
@@ -116,35 +114,35 @@
         justify-content: center;
         align-items: center;
         flex-wrap: wrap; 
-        gap: 5px 10px; /* CORRECTION : Espace entre logos réduit */
-        margin-top: 15px; /* CORRECTION : Marge réduite (était 25px) */
-        padding-bottom: 10px; 
+        gap: 4px; /* CORRECTION : Espace entre logos réduit */
+        margin-top: 10px; /* CORRECTION : Marge réduite */
+        padding-bottom: 5px; /* CORRECTION : Padding réduit */
     }
 
     .payments img {
         height: auto; max-width: 100%; object-fit: contain;
-        display: block; padding: 5px; border-radius: 8px;
+        display: block; padding: 4px; border-radius: 8px; /* CORRECTION : Padding réduit */
         border: 2px solid #ffcc00; 
-        margin: 5px 0; 
+        margin: 4px 0; /* CORRECTION : Marge réduite */
     }
 
-    /* CORRECTION N°3 : Tailles des logos réduites */
+    /* CORRECTION N°3 : Tailles des logos RÉDUITES AGGRESSIVEMENT */
     .paypal-logo, .sumup-logo { 
-        max-height: 55px; /* Était 65px */
+        max-height: 45px; /* Était 55px */
         width: auto;
     }
     
     .payments .cards-line {
         width: 100%; display: block; 
         background: #f7f7f7; border-radius: 8px;
-        padding: 8px; /* Padding réduit */
-        margin: 5px 0; /* CORRECTION : Marge réduite (était 8px) */
+        padding: 6px; /* CORRECTION : Padding réduit */
+        margin: 4px 0; /* CORRECTION : Marge réduite */
         border: 2px solid #ffcc00;
     }
 
     .cards-line img {
         border: none;
-        max-height: 35px; /* CORRECTION : Hauteur réduite (était 40px) */
+        max-height: 30px; /* CORRECTION : Hauteur réduite (était 35px) */
         width: 100%; object-fit: contain; 
         padding: 0; margin: 0;
     }
@@ -152,11 +150,11 @@
     .google-pay-block {
         width: 100%; display: flex; flex-direction: column;
         align-items: center;
-        margin: 5px 0; /* CORRECTION : Marge réduite (était 8px) */
+        margin: 4px 0; /* CORRECTION : Marge réduite */
     }
     .google-pay-block img {
         background: #f7f7f7; 
-        max-height: 55px; /* CORRECTION : Hauteur réduite (était 65px) */
+        max-height: 45px; /* CORRECTION : Hauteur réduite (était 55px) */
         border: 2px solid #ffcc00;
         margin-bottom: 5px;
     }
@@ -164,15 +162,17 @@
 
     .credit-text-box {
         background: #000; color: #f7f7f7;
-        padding: 8px; font-size: 0.7em; line-height: 1.4;
+        padding: 6px; /* CORRECTION : Padding réduit */
+        font-size: 0.65em; /* CORRECTION : Taille réduite pour être sûr */
+        line-height: 1.4;
         border-radius: 4px; border: 1px solid #ffcc00;
         width: 80%; max-width: 250px;
         margin: 0 auto; text-align: left;
     }
 
     .logo-container {
-        width: 80px; height: 80px;
-        margin: 0 auto 10px; /* CORRECTION : Marge réduite (était 15px) */
+        width: 70px; height: 70px; /* CORRECTION : Taille réduite */
+        margin: 0 auto 8px; /* CORRECTION : Marge réduite */
         border-radius: 50%; overflow: hidden;
         border: 4px solid #ffcc00;
         box-shadow: 0 0 15px rgba(255, 204, 0, 0.8);
@@ -196,7 +196,8 @@
     /* === ANIMATION TEXTE (TRÈS VISIBLE) === */
     .pulsing-text {
         display: inline-block; color: #ffcc00; 
-        font-size: 1.2em; animation: textPulse 1s infinite alternate;
+        font-size: 1.1em; /* CORRECTION : Taille réduite */
+        animation: textPulse 1s infinite alternate;
         font-weight: 700; transition: all 0.5s; 
     }
     @keyframes textPulse {
@@ -262,24 +263,16 @@
     const music = document.getElementById('christmas-music');
     const redirectUrl = 'https://shop.kixx.fr';
     
-    // Fonction pour démarrer le compte à rebours et la musique
     function startRedirect() {
-        // 1. Démarrer la musique 
         music.load();
         music.muted = false;
         music.volume = 0.5;
         music.play().catch(error => {
             console.log("Lecture audio bloquée (smartphone) :", error);
         });
-
-        // 2. Cacher le bouton et afficher la minuterie
         startButton.style.display = 'none';
         countdownEl.style.display = 'block';
-        
-        // Afficher l'état initial
         countdownEl.textContent = `Redirection automatique dans ${seconds} seconde${seconds>1?'s':''}...`;
-
-        // 3. Démarrer la minuterie
         const timer = setInterval(() => {
             seconds--;
             countdownEl.textContent = `Redirection automatique dans ${seconds} seconde${seconds>1?'s':''}...`;
@@ -292,18 +285,12 @@
     }
     
     document.addEventListener('DOMContentLoaded', (event) => {
-        // CORRECTION TIMER : Met à jour la balise meta-refresh avec la valeur JS
         const metaRefresh = document.querySelector('meta[http-equiv="refresh"]');
         if (metaRefresh) {
             metaRefresh.setAttribute('content', `${initialSeconds};url=${redirectUrl}`);
         }
-        
-        // Initialiser le texte du bouton
         startButton.textContent = `Chargement de la boutique.Activer la magie de Noël  (${initialSeconds}s) 🎶`;
-        
-        // Attacher l'événement de clic au bouton
         startButton.addEventListener('click', startRedirect);
-        
     });
 
   </script>
