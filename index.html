@@ -24,7 +24,7 @@
         justify-content: center;
         align-items: flex-start; /* Ancrage en HAUT */
         min-height: 100vh;
-        padding: 10px 0; /* CORRECTION : Padding vertical réduit */
+        padding: 10px 0; /* Padding vertical minimum */
         box-sizing: border-box;
         text-align: center;
         position: relative; 
@@ -57,8 +57,8 @@
     }
 
     .container {
-        /* CORRECTION N°1 : Padding réduit au max */
-        padding: 15px; 
+        /* CORRECTION N°1 : Padding encore réduit */
+        padding: 12px 15px 10px 15px; 
         background: #990000; 
         border-radius: 25px; 
         max-width: 450px; 
@@ -67,40 +67,40 @@
         border: 5px solid #ffcc00; 
         position: relative; 
         
-        /* CORRECTION N°2 : Le "blocage" de hauteur que tu as suggéré */
-        max-height: 98vh; /* Ne sera jamais plus grand que l'écran */
-        overflow-y: auto; /* Sécurité si un écran est VRAIMENT petit */
+        /* Blocage de la hauteur */
+        max-height: 98vh;
+        overflow-y: auto; /* Sécurité au cas où */
     }
 
     h1 {
-        font-size: 24px; /* CORRECTION : Taille réduite */
-        margin-bottom: 8px; /* CORRECTION : Marge réduite */
+        font-size: 24px; 
+        margin-bottom: 8px; 
         color: #ffcc00; 
     }
 
     p {
         color: #f7f7f7; 
-        margin-bottom: 10px; /* CORRECTION : Marge réduite */
+        margin-bottom: 8px; /* CORRECTION : Marge réduite */
         font-weight: 500;
-        line-height: 1.4; /* CORRECTION : Interligne réduit */
+        line-height: 1.4; 
     }
 
     /* --- STYLES TIMER/BOUTON --- */
     .timer {
-        font-size: 18px; /* CORRECTION : Taille réduite */
+        font-size: 18px; 
         color: #ffcc00; 
-        margin-top: 8px; /* CORRECTION : Marge réduite */
+        margin-top: 8px; 
         font-weight: bold;
     }
 
     #start-button {
         background: #ffcc00; color: #990000; border: 3px solid #ffcc00;
-        padding: 10px 20px; /* CORRECTION : Padding réduit */
+        padding: 10px 20px; 
         font-size: 1.1em; font-weight: bold;
         border-radius: 12px; cursor: pointer;
         box-shadow: 0 0 15px rgba(255, 204, 0, 0.7);
         transition: all 0.3s;
-        margin-top: 8px; /* CORRECTION : Marge réduite */
+        margin-top: 8px; 
         width: 100%; display: block; 
     }
     #start-button:hover {
@@ -114,35 +114,35 @@
         justify-content: center;
         align-items: center;
         flex-wrap: wrap; 
-        gap: 4px; /* CORRECTION : Espace entre logos réduit */
-        margin-top: 10px; /* CORRECTION : Marge réduite */
-        padding-bottom: 5px; /* CORRECTION : Padding réduit */
+        gap: 2px; /* CORRECTION : Espace minimum */
+        margin-top: 8px; /* CORRECTION : Marge réduite */
+        padding-bottom: 5px; 
     }
 
     .payments img {
         height: auto; max-width: 100%; object-fit: contain;
-        display: block; padding: 4px; border-radius: 8px; /* CORRECTION : Padding réduit */
+        display: block; padding: 3px; border-radius: 8px; /* CORRECTION : Padding réduit */
         border: 2px solid #ffcc00; 
-        margin: 4px 0; /* CORRECTION : Marge réduite */
+        margin: 2px 0; /* CORRECTION : Marge réduite */
     }
 
-    /* CORRECTION N°3 : Tailles des logos RÉDUITES AGGRESSIVEMENT */
+    /* CORRECTION N°2 : Tailles des logos finale */
     .paypal-logo, .sumup-logo { 
-        max-height: 45px; /* Était 55px */
+        max-height: 42px; /* Était 45px */
         width: auto;
     }
     
     .payments .cards-line {
         width: 100%; display: block; 
         background: #f7f7f7; border-radius: 8px;
-        padding: 6px; /* CORRECTION : Padding réduit */
-        margin: 4px 0; /* CORRECTION : Marge réduite */
+        padding: 5px; /* CORRECTION : Padding réduit */
+        margin: 2px 0; /* CORRECTION : Marge réduite */
         border: 2px solid #ffcc00;
     }
 
     .cards-line img {
         border: none;
-        max-height: 30px; /* CORRECTION : Hauteur réduite (était 35px) */
+        max-height: 28px; /* CORRECTION : Hauteur réduite (était 30px) */
         width: 100%; object-fit: contain; 
         padding: 0; margin: 0;
     }
@@ -150,11 +150,11 @@
     .google-pay-block {
         width: 100%; display: flex; flex-direction: column;
         align-items: center;
-        margin: 4px 0; /* CORRECTION : Marge réduite */
+        margin: 2px 0; /* CORRECTION : Marge réduite */
     }
     .google-pay-block img {
         background: #f7f7f7; 
-        max-height: 45px; /* CORRECTION : Hauteur réduite (était 55px) */
+        max-height: 42px; /* CORRECTION : Hauteur réduite (était 45px) */
         border: 2px solid #ffcc00;
         margin-bottom: 5px;
     }
@@ -162,8 +162,8 @@
 
     .credit-text-box {
         background: #000; color: #f7f7f7;
-        padding: 6px; /* CORRECTION : Padding réduit */
-        font-size: 0.65em; /* CORRECTION : Taille réduite pour être sûr */
+        padding: 6px; 
+        font-size: 0.65em; 
         line-height: 1.4;
         border-radius: 4px; border: 1px solid #ffcc00;
         width: 80%; max-width: 250px;
@@ -171,8 +171,8 @@
     }
 
     .logo-container {
-        width: 70px; height: 70px; /* CORRECTION : Taille réduite */
-        margin: 0 auto 8px; /* CORRECTION : Marge réduite */
+        width: 65px; height: 65px; /* CORRECTION : Taille réduite */
+        margin: 0 auto 8px; 
         border-radius: 50%; overflow: hidden;
         border: 4px solid #ffcc00;
         box-shadow: 0 0 15px rgba(255, 204, 0, 0.8);
@@ -196,7 +196,7 @@
     /* === ANIMATION TEXTE (TRÈS VISIBLE) === */
     .pulsing-text {
         display: inline-block; color: #ffcc00; 
-        font-size: 1.1em; /* CORRECTION : Taille réduite */
+        font-size: 1.1em; 
         animation: textPulse 1s infinite alternate;
         font-weight: 700; transition: all 0.5s; 
     }
@@ -289,7 +289,10 @@
         if (metaRefresh) {
             metaRefresh.setAttribute('content', `${initialSeconds};url=${redirectUrl}`);
         }
-        startButton.textContent = `Chargement de la boutique.Activer la magie de Noël  (${initialSeconds}s) 🎶`;
+        
+        // CORRECTION N°3 : Texte du bouton raccourci pour ne pas passer sur 2 lignes
+        startButton.textContent = `Activer la magie de Noël (${initialSeconds}s) 🎶`;
+        
         startButton.addEventListener('click', startRedirect);
     });
 
