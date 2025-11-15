@@ -10,23 +10,28 @@
   <style>
     /* === STYLES NOËL === */
     
-    /* CORRECTION ARRIÈRE-PLAN : Couleur sur HTML, pas sur BODY */
     html {
-        background: #0d4232; /* Fond vert/bleu nuit foncé */
-        overflow-x: hidden; /* Empêche tout débordement horizontal */
+        background: #0d4232; 
+        overflow-x: hidden; 
     }
 
     body {
         margin: 0;
         font-family: Inter, sans-serif;
-        background: transparent; /* Body transparent pour voir le HTML et les effets */
+        background: transparent; 
         color: #f7f7f7; 
         display: flex;
         justify-content: center;
-        align-items: center;
+        
+        /* * CORRECTION RESPONSIVE N°1 (LA PLUS IMPORTANTE)
+         * On passe de 'align-items: center' à 'align-items: flex-start'.
+         * Cela force le conteneur à s'ancrer en HAUT de l'écran.
+         * Fini le débordement vertical sur mobile.
+         */
+        align-items: flex-start; 
+        
         min-height: 100vh;
-        /* CORRECTION RESPONSIVE : Réduction du padding pour petits écrans */
-        padding: 20px 0; 
+        padding: 20px 0; /* Un peu d'air en haut et en bas */
         box-sizing: border-box;
         text-align: center;
         position: relative; 
@@ -41,15 +46,12 @@
         width: 100vw;
         height: 100vh;
         background: radial-gradient(circle at 50% 100%, #004d40 0%, transparent 60%); 
-        /* CORRECTION ARRIÈRE-PLAN : Opacité augmentée pour être visible */
         opacity: 0.25; 
-        z-index: -2; /* Derrière la neige, mais visible */
+        z-index: -2; 
         pointer-events: none;
     }
 
-    /* Effet "chute de neige" (Cristaux plus visibles et plus denses) */
-    
-    /* Couche 1: Gros flocons / Cristaux */
+    /* Effet "chute de neige" */
     body::before {
         content: "";
         position: fixed;
@@ -60,13 +62,10 @@
         background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10"><circle cx="5" cy="5" r="2" fill="#e0f0ff"/></svg>') repeat; 
         background-size: 50px 50px;
         animation: snowfall 18s linear infinite;
-        /* CORRECTION ARRIÈRE-PLAN : Opacité et Z-index corrigés */
         opacity: 0.9; 
         pointer-events: none;
         z-index: -1;
     }
-
-    /* Couche 2: Petits et rapides cristaux */
     body::after {
         content: "";
         position: fixed;
@@ -78,31 +77,35 @@
         background-size: 30px 30px;
         animation: snowfall 12s linear infinite;
         animation-delay: -3s;
-        /* CORRECTION ARRIÈRE-PLAN : Opacité et Z-index corrigés */
         opacity: 0.7;
         pointer-events: none;
         z-index: -1;
     }
-
     @keyframes snowfall {
         0% { background-position: 0% 0%; }
         100% { background-position: 500px 1500px; } 
     }
 
     .container {
-        /* CORRECTION RESPONSIVE : Padding réduit pour petits écrans */
         padding: 30px 20px; 
         background: #990000; 
         border-radius: 25px; 
-        max-width: 450px; /* C'est ça qui gère la taille sur Desktop */
-        width: 95%; /* C'est ça qui gère la taille sur Smartphone */
+        max-width: 450px; 
+        width: 95%; 
         box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
         border: 5px solid #ffcc00; 
         position: relative; 
+        
+        /* * CORRECTION RESPONSIVE N°2
+         * On s'assure que le bloc ne soit JAMAIS plus grand que l'écran.
+         * Si le contenu (logos) est trop long, c'est l'intérieur du bloc 
+         * qui défilera, mais le cadre restera en place.
+         */
+        max-height: 95vh; /* 95% de la hauteur de l'écran */
+        overflow-y: auto; /* Ajoute un scroll INTERNE si besoin */
     }
 
     h1 {
-        /* CORRECTION RESPONSIVE : Taille de police légèrement réduite */
         font-size: 26px; 
         margin-bottom: 10px;
         color: #ffcc00; 
@@ -110,7 +113,7 @@
 
     p {
         color: #f7f7f7; 
-        margin-bottom: 20px; /* Marge réduite */
+        margin-bottom: 20px; 
         font-weight: 500;
         line-height: 1.5;
     }
@@ -127,7 +130,6 @@
         background: #ffcc00; 
         color: #990000; 
         border: 3px solid #ffcc00;
-        /* CORRECTION RESPONSIVE : Padding et police réduits */
         padding: 12px 25px;
         font-size: 1.1em;
         font-weight: bold;
@@ -135,7 +137,7 @@
         cursor: pointer;
         box-shadow: 0 0 15px rgba(255, 204, 0, 0.7);
         transition: all 0.3s;
-        margin-top: 15px; /* Marge réduite */
+        margin-top: 15px; 
         width: 100%;
         display: block; 
     }
@@ -146,7 +148,6 @@
         box-shadow: 0 0 25px #f7f7f7;
         transform: scale(1.03);
     }
-    /* --- FIN STYLES TIMER/BOUTON --- */
 
     /* === GESTION DE LA LIGNE DE PAIEMENT === */
     .payments {
@@ -154,7 +155,6 @@
         justify-content: center;
         align-items: center;
         flex-wrap: wrap; 
-        /* CORRECTION RESPONSIVE : Espace réduit */
         gap: 8px 12px; 
         margin-top: 25px; 
         padding-bottom: 10px; 
@@ -171,35 +171,32 @@
         margin: 5px 0; 
     }
 
-    /* CORRECTION RESPONSIVE : Logos principaux légèrement réduits */
-    /* *** CORRIGÉ : .amex-logo retiré car l'image était manquante *** */
+    /* Logos principaux (Paypal, Sumup) */
     .paypal-logo, .sumup-logo { 
         max-height: 65px; 
         width: auto;
     }
     
-    /* Ligne CB (maintenant remplie) */
+    /* * CORRECTION LOGOS PAIEMENT N°1
+     * La ligne de cartes (qui était vide)
+     */
     .payments .cards-line {
         width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center; 
-        flex-wrap: wrap; 
-        gap: 5px;
-        background: #990000; 
+        display: block; /* On change en 'block' pour que l'image prenne la largeur */
+        background: #f7f7f7; /* Fond blanc pour bien voir la strip */
         border-radius: 8px;
-        padding: 0; 
-        margin: 8px 0; /* Marge réduite */
+        padding: 10px; /* Un peu d'espace */
+        margin: 8px 0; 
+        border: 2px solid #ffcc00;
     }
 
+    /* L'image strip à l'intérieur de la 'cards-line' */
     .cards-line img {
         border: none;
-        /* *** CORRIGÉ : Styles ajustés pour le bandeau cb.png *** */
-        width: 100%;
-        max-width: 400px; /* Empêche le bandeau d'être trop large */
-        height: auto;
-        object-fit: contain;
-        padding: 2px;
+        max-height: 40px; /* Hauteur max de la strip */
+        width: 100%; /* L'image prend 100% de la largeur du conteneur */
+        object-fit: contain; /* S'assure que la strip ne soit pas déformée */
+        padding: 0;
         margin: 0;
     }
     
@@ -209,15 +206,14 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin: 8px 0; /* Marge réduite */
+        margin: 8px 0; 
     }
     .google-pay-block img {
         background: #f7f7f7; 
-        max-height: 65px; /* Taille réduite */
+        max-height: 65px; 
         border: 2px solid #ffcc00;
         margin-bottom: 5px;
     }
-    /* Note: Le texte ci-dessous remplace l'image credit.png, c'est mieux */
     .credit-text-box {
         background: #000;
         color: #f7f7f7;
@@ -233,7 +229,6 @@
     }
 
     .logo-container {
-        /* CORRECTION RESPONSIVE : Taille réduite */
         width: 80px;
         height: 80px;
         margin: 0 auto 15px;
@@ -274,7 +269,7 @@
     .pulsing-text {
         display: inline-block;
         color: #ffcc00; 
-        font-size: 1.2em; /* Taille réduite */
+        font-size: 1.2em; 
         animation: textPulse 1s infinite alternate;
         font-weight: 700;
         transition: all 0.5s; 
@@ -301,7 +296,7 @@
 
   <div class="container">
     <div class="logo-container">
-      <img src="assets/logo-kixx.jpg" alt="Kixx">
+      <img src="assets/logo-kixx.png" alt="Kixx">
     </div>
 
     <h1>Joyeuses Fêtes ! 🎁 </h1>
@@ -320,12 +315,11 @@
       <img src="assets/sumup.png" alt="SumUp" class="sumup-logo">
       
       <div class="cards-line">
-        <img src="assets/amex.png" alt="Cartes bancaires supportées (Visa, Mastercard, Amex)">
+         <img src="assets/amex.png" alt="Cartes de paiement acceptées">
       </div>
 
       <div class="google-pay-block">
         <img src="assets/googlepay.png" alt="Google Pay">
-        
         <div class="credit-text-box">
             *Un crédit vous engage et doit être remboursé<br>
             vérifiez vos capacités de remboursement avant de vous engager<br>
@@ -333,7 +327,7 @@
         </div>
       </div>
       
-      </div>
+    </div>
   </div>
 
   <script>
@@ -350,7 +344,6 @@
     // Fonction pour démarrer le compte à rebours et la musique
     function startRedirect() {
         // 1. Démarrer la musique 
-        // CORRECTION AUDIO : Forcer le load() et s'assurer que muted est false
         music.load();
         music.muted = false;
         music.volume = 0.5;
@@ -384,7 +377,7 @@
             metaRefresh.setAttribute('content', `${initialSeconds};url=${redirectUrl}`);
         }
         
-        // Initialiser le texte du bouton avec le timer par défaut (initialSeconds)
+        // Initialiser le texte du bouton
         startButton.textContent = `Chargement de la boutique.Activer la magie de Noël  (${initialSeconds}s) 🎶`;
         
         // Attacher l'événement de clic au bouton
